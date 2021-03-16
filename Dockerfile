@@ -16,18 +16,25 @@ RUN apk update && apk add --no-cache \
         libzip-dev \
         zip \
         unzip \
-        postgresql-dev && \
+        postgresql-dev \
+        npm \
+
+        && \
 
         mkdir -p /usr/src/php/ext/redis \
         && curl -L https://github.com/phpredis/phpredis/archive/$PHPREDIS_VERSION.tar.gz | tar xvz -C /usr/src/php/ext/redis --strip 1 \
-        && echo 'redis' >> /usr/src/php-available-exts && \
+        && echo 'redis' >> /usr/src/php-available-exts \
+
+        && \
 
         docker-php-ext-install -j "$(nproc)" \
         zip \
         pdo pdo_pgsql \
         opcache \
         bcmath \
-        redis && \
+        redis \
+
+        && \
 
         addgroup -S php && adduser -S php -G php && \
         usermod -u $UID php && \
