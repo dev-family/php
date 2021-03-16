@@ -2,13 +2,13 @@
 
 Our main php docker image.
 
-# What's inside
+## What's inside
 
 * php-cli, php-fpm + all necessary default extensions
 * composer
 * node, npm
 
-# Usage
+## Usage
 
 ```dockerfile
 FROM ghcr.io/dev-family/php
